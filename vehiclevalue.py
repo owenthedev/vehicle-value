@@ -10,10 +10,17 @@ import requests
 from bs4 import BeautifulSoup
 
 
+col1, col2 = st.columns(2)
 
-st.title('VEHICLE VALUE CHECKER')
+with col1:
+    st.image('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/vehicle-value-logo.png',width=200)
+
+with col2:
+    st.title('VEHICLE VALUE CHECKER')
+
+
 st.write('Get a valuation for your car')
-st.image('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/vehicle-value-logo.png',width=200)
+
 
 url = st.text_input(label='URL',value='https://www.cars.co.za/usedcars.php?make_model_variant=Hyundai[i20][1.2]&sort=date_d&vfs_year=2022-2022|2021-2021|2020-2020|2019-2019|2018-2018&P=')
 st.write('The current URL is', url)
