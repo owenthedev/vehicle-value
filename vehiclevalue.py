@@ -23,7 +23,7 @@ st.write('Get a valuation for your car')
 
 
 url = st.text_input(label='URL',value='https://www.cars.co.za/usedcars.php?make_model_variant=Hyundai[i20][1.2]&sort=date_d&vfs_year=2022-2022|2021-2021|2020-2020|2019-2019|2018-2018&P=')
-st.write('The current URL is', url)
+
 
 #Set Up Scrape
 hheaders = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'}
@@ -111,6 +111,9 @@ print("the minimum is : "+str(min))
 max = pricesaNum[arrlen-1]
 print("the maximum is : "+str(max))
 
+st.write('')
+st.write('')
+st.header('Your Car Valuation')
 st.write('the average price is: R',mean)
 st.write('the median price is: R',median)
 st.write('the range of the prices is: R',ange)
