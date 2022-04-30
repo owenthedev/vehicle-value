@@ -111,7 +111,8 @@ print("the minimum is : "+str(min))
 max = pricesaNum[arrlen-1]
 print("the maximum is : "+str(max))
 
-st.write('the average price is :R')
-st.write(mean)
+st.Header('the average price is: R',mean)
+st.Header('the median price is: R',median)
+st.Header('the range of the prices is: R',ange)
 
 
