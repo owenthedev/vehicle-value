@@ -7,7 +7,6 @@ Created on Sat Apr 30 22:11:42 2022
 
 import streamlit as st
 import requests
-import lxml
 from bs4 import BeautifulSoup
 
 
