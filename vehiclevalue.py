@@ -2,7 +2,7 @@
 """
 Created on Sat Apr 30 22:11:42 2022
 
-@author: owenn
+@author: owen nxumalo, carl nxumalo
 """
 
 import streamlit as st
