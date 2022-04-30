@@ -7,5 +7,7 @@ Created on Sat Apr 30 22:11:42 2022
 
 import streamlit as st
 
-st.write('VEHICLE VALUE CHECKER')
+st.title('VEHICLE VALUE CHECKER')
+st.write('Get a valuation for your car')
+st.image('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/VehicleValueCheckerLogo.png',width=800)
 
