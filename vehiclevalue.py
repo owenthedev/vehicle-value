@@ -132,17 +132,19 @@ def get_price(url):
     #print("the range is : "+str(ange))
     
     #min
-    #min = pricesaNum[0]
+    min = min(pricesaNum)
     #print("the minimum is : "+str(min))
     
     #minimum 
-    #max = pricesaNum[arrlen-1]
+    max = max(pricesaNum)
     #print("the maximum is : "+str(max))
     
     st.write('')
     st.write('')
     st.header('Your Car Valuation')
     st.write('the average price is: R',mean)
+    st.write('the minimum price is: R',min)
+    st.write('the maximum price is: R',max)
  
     # x-axis values
     x = mileageNum
@@ -151,7 +153,7 @@ def get_price(url):
 
     # plotting points as a scatter plot
     plt.scatter(x, y, label= "stars", color= "green",
-                marker= "*", s=30)
+                marker= "*", s=18)
 
     # x-axis label
     plt.xlabel('car mileage')
