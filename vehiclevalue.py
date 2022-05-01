@@ -7,6 +7,7 @@ Created on Sat Apr 30 22:11:42 2022
 
 import streamlit as st
 import requests
+import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 
 
@@ -142,6 +143,29 @@ def get_price(url):
     st.write('')
     st.header('Your Car Valuation')
     st.write('the average price is: R',mean)
+ 
+    # x-axis values
+    x = mileageNum
+    # y-axis values
+    y = pricesaNum
+
+    # plotting points as a scatter plot
+    plt.scatter(x, y, label= "stars", color= "green",
+                marker= "*", s=30)
+
+    # x-axis label
+    plt.xlabel('car mileage')
+    # frequency label
+    plt.ylabel('price')
+    # plot title
+    plt.title('Plot of Mileage (km) and Price (R millions)')
+    # showing legend
+    plt.legend()
+    plt.savefig('chart.jpeg')
+    # function to show the plot
+
+
+    st.image('chart.jpeg', caption='Miles vs price')
     
 
 #UI
