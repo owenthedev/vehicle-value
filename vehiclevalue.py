@@ -167,7 +167,7 @@ def get_price(url):
     # function to show the plot
 
 
-    st,header('Graph of Price vs Mileage')
+    st.header('Graph of Price vs Mileage')
     st.image('chart.jpeg', caption='Miles vs price')
     
 
