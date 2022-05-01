@@ -160,13 +160,14 @@ def get_price(url):
     # frequency label
     plt.ylabel('price')
     # plot title
-    plt.title('Plot of Mileage (km) and Price (R millions)')
+    plt.title('Plot of Mileage (km) and Price (Rands)')
     # showing legend
     plt.legend()
     plt.savefig('chart.jpeg')
     # function to show the plot
 
 
+    st,header('Graph of Price vs Mileage')
     st.image('chart.jpeg', caption='Miles vs price')
     
 
