@@ -132,19 +132,19 @@ def get_price(url):
     #print("the range is : "+str(ange))
     
     #min
-    min = min(pricesaNum)
+    mins = min(pricesaNum)
     #print("the minimum is : "+str(min))
     
     #minimum 
-    max = max(pricesaNum)
+    maxs = max(pricesaNum)
     #print("the maximum is : "+str(max))
     
     st.write('')
     st.write('')
     st.header('Your Car Valuation')
     st.write('the average price is: R',mean)
-    st.write('the minimum price is: R',min)
-    st.write('the maximum price is: R',max)
+    st.write('the minimum price is: R',mins)
+    st.write('the maximum price is: R',maxs)
  
     # x-axis values
     x = mileageNum
