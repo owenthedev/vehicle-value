@@ -180,8 +180,7 @@ with col1:
 
 with col2:
     st.title('VEHICLE VALUE CHECKER')
-    st.audio('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/SVT145%20-%20Aparde%20-%20Erosion%20(Free%20Track)%20-%20Master_V1_MP3.mp3')
-
+   
 
 
 st.write('Get a valuation for your car')
