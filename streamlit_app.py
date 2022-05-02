@@ -191,7 +191,7 @@ def get_price(url):
     st.write('')
 
     st.header('Graph of Price vs Mileage')
-    st.image('chart.jpeg', caption='Price vs Mileage',width=650)
+    st.image('chart.jpeg', caption='Price vs Mileage',width=400)
     
     st.write('')
     
