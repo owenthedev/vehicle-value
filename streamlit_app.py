@@ -209,7 +209,7 @@ def get_price(url):
 col1, col2 = st.columns(2)
 
 with col1:
-    st.image('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/vehicle-value-logo(1).png',width=200)
+    st.image('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/vehicle-value-logoblk.png',width=200)
     
 
 with col2:
