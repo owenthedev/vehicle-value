@@ -219,6 +219,9 @@ with col2:
 
 
 st.write('')
+st.write("Step 1- Go to cars.co.za and search for your car there (select make, model year, mileage etc)."
+st.write("Step 2- Copy the url and paste it into the text field.")
+st.write('')
 
 url_in = st.text_input(label='Paste the URL here then press Enter',value='')
 if url_in=='':
