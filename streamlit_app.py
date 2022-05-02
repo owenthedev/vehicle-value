@@ -171,7 +171,7 @@ def get_price(url):
     
     ########### GUI ###############
     
-    st.write('')
+ 
     st.header('Vehicle Price Information')
     st.write('Note that dealerships need to make a profit when they buy a car from you. Therefore, the selling price of the car is higher than the price they bought the car for.')
     colnodeal, coldeal = st.columns(2)
@@ -221,13 +221,12 @@ with col2:
 st.write('')
 st.write('Step 1- Go to cars.co.za and search for your car there (select make, model year, mileage etc).')
 st.write('Step 2- Copy the url and paste it into the text field.')
-st.write('')
 
 url_in = st.text_input(label='Paste the URL here then press Enter',value='')
 if url_in=='':
     st.write('')
     st.write('')
-    st.subheader('Please enter a URL above to get started or watch the video below for help')
+    st.write('Please enter a URL above to get started or watch the video below for help')
     st.video('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/how_to_value.mp4')
 else:
     get_price(url_in)
