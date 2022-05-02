@@ -225,7 +225,7 @@ if url_in=='':
     st.write('')
     st.write('')
     st.subheader('Please enter a URL above to get started or watch the video below for help')
-    st.video('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/how%20to%20vehicle%20value(1).mp4')
+    st.video('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/how_to_value.mp4')
 else:
     get_price(url_in)
     
