@@ -214,7 +214,7 @@ with col1:
 
 with col2:
     st.title('VEHICLE VALUE CHECKER')
-    st.subheader('Get a good idea about the value of your car from us, an unbiased source.')
+    st.write('Get a good idea about the value of your car from us, an unbiased source.')
    
 
 
