@@ -221,12 +221,12 @@ with col2:
 st.write('')
 st.write('Step 1- Go to cars.co.za and search for your car there (select make, model year, mileage etc).')
 st.write('Step 2- Copy the url and paste it into the text field.')
+st.write('Need help? Scroll down to watch the explainer video below')
+st.write('')
 
 url_in = st.text_input(label='Paste the URL here then press Enter',value='')
 if url_in=='':
     st.write('')
-    st.write('')
-    st.write('Please enter a URL above to get started or watch the video below for help')
     st.video('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/how_to_value.mp4')
 else:
     get_price(url_in)
