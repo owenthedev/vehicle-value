@@ -222,11 +222,7 @@ def get_price(url):
     st.write('')
 
     st.header('Graph of Price vs Mileage')
-    st.image('chart.jpeg', caption='Price vs Mileage',width=400)
-    
-    number = st.number_input('Insert your mileage')
-    predictedprice = myfunc(int(number))
-    st.write('The price, given the mileage, is R',round(predictedprice,2))
+    st.image('chart.png', caption='Price vs Mileage',width=500)
     
     
     st.write('')
