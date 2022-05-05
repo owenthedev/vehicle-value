@@ -199,7 +199,7 @@ def get_price(url):
         # function to show plot
         plt.show()
 
-    def main():
+    def regg():
         # observations / data
         x = np.array(mileageNum)
         y = np.array(pricesaNum)
@@ -214,8 +214,8 @@ def get_price(url):
         # plotting regression line
         plot_regression_line(x, y, b)
 
-    if __name__ == "__main__":
-        main()
+    if __name__ == "__regg__":
+        regg()
     print(r)
     def myfunc(x):
       return slope * x + intercept
