@@ -206,7 +206,7 @@ def get_price(url):
     st.write('')
     st.subheader('Download Data')
     st.write('We believe in being open, so download the data below and calculate for yourself')
-    st.download_button('Download Dataset EXCEL',carexcel,file_name='cardata.xlsx',key=1)
+    st.download_button('Download Dataset EXCEL',carsexcel,file_name='cardata.xlsx',key=1)
     st.download_button('Download Dataset CSV',carcsv,file_name='cardata.csv',key=2)
     
     
