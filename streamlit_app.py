@@ -180,7 +180,7 @@ def get_price(url):
     workbook = xlsxwriter.Workbook(output, {'in_memory': True})
     worksheet = workbook.add_worksheet()
     for a in range(0,arrlen-1):
-        worksheet.write('A'+str(a_1),ecardf['Price'][a])
+        worksheet.write('A'+str(a+1),ecardf['Price'][a])
     workbook.close()
 
     
