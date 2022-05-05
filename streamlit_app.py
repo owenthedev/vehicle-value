@@ -175,8 +175,8 @@ def get_price(url):
     carcsv=cardf.to_csv(index=False)
     
     ##### Ceate an excel file
-    datatoexcel=pd.ExcelWriter("cardata.xlsx",engine='xlsxwriter')
-    carsexcel=ecardf.to_excel(datatoexcel, sheet_name="prices_mileage")
+    #datatoexcel=pd.ExcelWriter("cardata.xlsx",engine='xlsxwriter')
+    #carsexcel=ecardf.to_excel(datatoexcel, sheet_name="prices_mileage")
     output = BytesIO()
 
     # Write files to in-memory strings using BytesIO
@@ -189,11 +189,13 @@ def get_price(url):
     worksheet.write('C2',url)
     worksheet.write('D1','Average')
     worksheet.write('E1',str(mean))
-    worksheet.write('F1', '=SUM(A2:A'+str(arrlen+1)+')')
+    worksheet.write('F1', '=AVERAGE(A2:A'+str(arrlen+1)+')')
     worksheet.write('D2','Minimum')
     worksheet.write('E2',str(mins))
+    worksheet.write('F2', '=MIN(A2:A'+str(arrlen+1)+')')
     worksheet.write('D3','Maximum')
     worksheet.write('E3',str(maxs))
+    worksheet.write('F3', '=MAX(A2:A'+str(arrlen+1)+')')
     for a in range(0,arrlen):
         worksheet.write('A'+str(a+2),ecardf['Price'][a])
         worksheet.write('B'+str(a+2),ecardf['Mileage'][a])
