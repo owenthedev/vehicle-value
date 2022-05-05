@@ -189,6 +189,7 @@ def get_price(url):
     worksheet.write('C2',url)
     worksheet.write('D1','Average')
     worksheet.write('E1',str(mean))
+    worksheet.write('F1', '=SUM(A2:A'+str(arrlen+1)+')')
     worksheet.write('D2','Minimum')
     worksheet.write('E2',str(mins))
     worksheet.write('D3','Maximum')
