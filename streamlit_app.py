@@ -10,6 +10,7 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
+from io import BytesIO
 
 
 #create function to get price
@@ -171,6 +172,16 @@ def get_price(url):
     ##### Ceate an excel file
     datatoexcel=pd.ExcelWriter("cardata.xlsx",engine='xlsxwriter')
     carsexcel=ecardf.to_excel(datatoexcel, sheet_name="prices_mileage")
+    output = BytesIO()
+
+    # Write files to in-memory strings using BytesIO
+    # See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
+    workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+    worksheet = workbook.add_worksheet()
+
+    worksheet.write('A1', 'Hello')
+    workbook.close()
+
     
     
     ########### GUI ###############
@@ -206,7 +217,13 @@ def get_price(url):
     st.write('')
     st.subheader('Download Data')
     st.write('We believe in being open, so download the data below and calculate for yourself')
-    st.download_button('Download Dataset EXCEL',carsexcel)
+    st.download_button(
+        label="Download Excel workbook",
+        data=output.getvalue(),
+        file_name="workbook.xlsx",
+        mime="application/vnd.ms-excel"
+    )
+    #st.download_button('Download Dataset EXCEL',carsexcel)
     st.download_button('Download Dataset CSV',carcsv,file_name='cardata.csv',key=2)
     
     
