@@ -164,13 +164,13 @@ def get_price(url):
     cardf=pd.DataFrame()
     cardf['Price']=pricesaNum
     cardf['Mileage']=mileageNum
-    
+    ecardf=cardf
     ##### Create a csv file
     carcsv=cardf.to_csv(index=False)
     
     ##### Ceate an excel file
     datatoexcel=pd.ExcelWriter("cardata.xlsx",engine='xlsxwriter')
-    carsexcel=cardf.to_excel(datatoexcel, sheet_name="prices_mileage")
+    carsexcel=ecardf.to_excel(datatoexcel, sheet_name="prices_mileage")
     
     
     ########### GUI ###############
@@ -206,7 +206,7 @@ def get_price(url):
     st.write('')
     st.subheader('Download Data')
     st.write('We believe in being open, so download the data below and calculate for yourself')
-    st.download_button('Download Dataset EXCEL',carsexcel,file_name='cardata.xlsx',key=1)
+    st.download_button('Download Dataset EXCEL',carsexcel,key=1)
     st.download_button('Download Dataset CSV',carcsv,file_name='cardata.csv',key=2)
     
     
