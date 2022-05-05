@@ -179,8 +179,8 @@ def get_price(url):
     # See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
     workbook = xlsxwriter.Workbook(output, {'in_memory': True})
     worksheet = workbook.add_worksheet()
-
-    worksheet.write(ecardf)
+    for a in range(0,arrlen-1):
+        worksheet.write('A'+str(a_1),ecardf['Price'][a])
     workbook.close()
 
     
