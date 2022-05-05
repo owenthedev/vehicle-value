@@ -180,7 +180,7 @@ def get_price(url):
     workbook = xlsxwriter.Workbook(output, {'in_memory': True})
     worksheet = workbook.add_worksheet()
 
-    worksheet.write('A1', 'Hello')
+    worksheet.write(ecardf)
     workbook.close()
 
     
@@ -221,15 +221,10 @@ def get_price(url):
     st.download_button(
         label="Download Excel workbook",
         data=output.getvalue(),
-        file_name="workbook.xlsx",
-        mime="application/vnd.ms-excel"
-    )
-    st.download_button(
-        label="Download Excel workbook",
-        data=carsexcel,
         file_name="cardata.xlsx",
         mime="application/vnd.ms-excel"
     )
+    
     #st.download_button('Download Dataset EXCEL',carsexcel)
     st.download_button('Download Dataset CSV',carcsv,file_name='cardata.csv',key=2)
     
