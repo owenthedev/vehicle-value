@@ -194,7 +194,7 @@ def get_price(url):
     worksheet.write('D3','Maximum')
     worksheet.write('E3', '=MAX(A2:A'+str(arrlen+1)+')')
     worksheet.write('E4','=LINEST(A2:A'+str(arrlen+1)+',B2:B'+str(arrlen+1)+',TRUE,FALSE)')
-for a in range(0,arrlen):
+    for a in range(0,arrlen):
         worksheet.write('A'+str(a+2),ecardf['Price'][a])
         worksheet.write('B'+str(a+2),ecardf['Mileage'][a])
     workbook.close()
