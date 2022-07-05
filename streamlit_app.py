@@ -248,16 +248,7 @@ def get_price(url):
     
 
 #UI
-col1, col2 = st.columns(2)
-
-with col1:
-    st.title('PriceSmiths Vehicle Valuer')
-    
-
-with col2:
-    st.write('paste the copied url below.')
-   
-
+st.title('PriceSmiths Vehicle Valuer') 
 url_in = st.text_input(label='Paste the URL here then press Enter',value='')
 if url_in=='':
     st.write('')
