@@ -238,7 +238,7 @@ def get_price(url):
     st.download_button(
         label="Download Excel workbook",
         data=output.getvalue(),
-        file_name="vehicle_value_car_data.xlsx",
+        file_name="vehicle_value_car_data",
         mime="application/vnd.ms-excel"
     )
     
@@ -251,24 +251,17 @@ def get_price(url):
 col1, col2 = st.columns(2)
 
 with col1:
-    st.image('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/vehicle-value-logoblk.png',width=200)
+    st.title('PriceSmiths Vehicle Valuer
     
 
 with col2:
-    st.title('VEHICLE VALUE CHECKER')
-    st.write('Get a good idea about the value of your car from us, an unbiased source.')
+    st.write('paste the copied url below.')
    
-
-
-
-st.write('Step 1- Go to cars.co.za and search for your car there (select make, model year, mileage etc).')
-st.write('Step 2- Copy the SEARCH RESULTS URL and paste it into the text field below.')
-st.write('Need help? Watch the explainer video below')
 
 url_in = st.text_input(label='Paste the URL here then press Enter',value='')
 if url_in=='':
     st.write('')
-    st.video('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/how_to_value.mp4')
+    #st.video('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/how_to_value.mp4')
 else:
     get_price(url_in)
     
