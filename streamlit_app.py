@@ -238,7 +238,7 @@ def get_price(url):
     st.download_button(
         label="Download Excel workbook",
         data=output.getvalue(),
-        file_name="vehicle_value_car_data",
+        file_name="vehicle_value_car_data.xls",
         mime="application/vnd.ms-excel"
     )
     
