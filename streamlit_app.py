@@ -14,6 +14,14 @@ from bs4 import BeautifulSoup
 from io import BytesIO
 import xlsxwriter
 
+hide_st_style="""
+                <style>
+                #MainMenu {visibility:hidden;}
+                footer {visibility: hidden;}
+                header {visibility: hidden;}
+                </style>
+                """
+st.markdown(hide_st_style,unsafe_allow_html=True)
 
 #create function to get price
 def get_price(url):
@@ -216,14 +224,6 @@ def get_price(url):
         price=slope*mileage+intercept
         return price
     ########### GUI ###############
-    hide_st_style="""
-                <style>
-                #MainMenu {visibility:hidden;}
-                footer {visibility: hidden;}
-                header {visibility: hidden;}
-                </style>
-                """
-    st.markdown(hide_st_style,unsafe_allow_html=True)
                 
     st.write('')
     st.header('Vehicle Market Data')
