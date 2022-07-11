@@ -235,21 +235,21 @@ def get_price(url):
     
     with colmile:
         st.subheader('Market mileage (km)')
-        st.write('average mileage is ',meanm)
-        st.write('minimum mileage is ',minm)
-        st.write('maximum mileage is ',maxm)
+        st.write('average mileage is ',int(meanm))
+        st.write('minimum mileage is ',int(minm))
+        st.write('maximum mileage is ',int(maxm))
     
     with colmark:
         st.subheader('Market prices (rand)')
-        st.write('average price is ',mean)
-        st.write('minimum price is ',mins)
-        st.write('maximum price is ',maxs)
+        st.write('average price is ',int(mean))
+        st.write('minimum price is ',int(mins))
+        st.write('maximum price is ',int(maxs))
 
     with coltrade:
         st.subheader('Trade-in prices (rand)')
-        st.write('average price is ',round(mean*(1-markup),2))
-        st.write('minimum price is ',round(mins*(1-markup),2))
-        st.write('maximum price is ',round(maxs*(1-markup),2))
+        st.write('average price is ',int(round(mean*(1-markup),2)))
+        st.write('minimum price is ',int(round(mins*(1-markup),2)))
+        st.write('maximum price is ',int(round(maxs*(1-markup),2)))
     
     st.write('')
 
