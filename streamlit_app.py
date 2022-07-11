@@ -8,6 +8,7 @@ Created on Sat Apr 30 22:11:42 2022
 import streamlit as st
 import requests
 import pandas as pd
+from scipy import stats
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 from io import BytesIO
@@ -90,8 +91,8 @@ def get_price(url):
     print(len(mileage))
     print(len(pricesa))
     
-    # Change string to float and remove currency symbols
-    sum=0
+   # Change string to float and remove currency symbols
+    sum1=0
     sum2=0
     count=0
     pricesaNum=[]
@@ -105,10 +106,13 @@ def get_price(url):
       mileageNum.append(float(ord2))
 
       add=(float(ord))
-      sum=sum+add
+      sum1=sum1+add
+      
+      addm=(float(ord2))
+      sum2=sum2+addm
 
       count=count+1
-    print('The sum:'+str(sum))
+    print('The sum:'+str(sum1))
     print('the prices:'+str(pricesaNum))
     print('the mileage:'+str(mileageNum))
     
@@ -120,8 +124,9 @@ def get_price(url):
     #Mean 
     arrlen=len(pricesaNum)
     
-    mean=round(sum/arrlen,2)
+    mean=round(sum1/arrlen,2)
     print("the mean is : "+str(mean))
+    meanm=round(sum2/arrlen,2)
     
     #median 
     #positionm=(arrlen+1)//2
@@ -136,10 +141,12 @@ def get_price(url):
     
     #min
     mins = min(pricesaNum)
+    minm=min(mileageNum)
     #print("the minimum is : "+str(min))
     
     #minimum 
     maxs = max(pricesaNum)
+    maxm=max(mileageNum)
     #print("the maximum is : "+str(max))
     
     ##### function to show the plot
@@ -147,11 +154,21 @@ def get_price(url):
     x = mileageNum
     # y-axis values
     y = pricesaNum
-
+    
+    ###### Create a dataframe
+    cardf=pd.DataFrame()
+    cardf['Price']=pricesaNum
+    cardf['Mileage']=mileageNum
+    ecardf=cardf
+    
     # plotting points as a scatter plot
     plt.scatter(x, y, label= "Data Points", color= "green",
-                marker= "+", s=15)
-
+                marker= "x", s=15)
+    slope,intercept,r,p,std_err=stats.linregress(cardf['Mileage'],cardf['Price'])
+    def myfunc(x):
+        return slope*x+intercept
+    mymodel=list(map(myfunc, x))
+    plt.plot(x,mymodel,color='black')
     # x-axis label
     plt.xlabel('Vehicle Mileage (km)')
     # frequency label
@@ -160,17 +177,9 @@ def get_price(url):
     plt.title('Plot of Vehicle Mileage and Price')
     # showing legend
     plt.legend()
-    plt.savefig('chart.png')
+    plt.savefig('chart.jpeg')
     
 
-    
-    
-    
-    ###### Create a dataframe
-    cardf=pd.DataFrame()
-    cardf['Price']=pricesaNum
-    cardf['Mileage']=mileageNum
-    ecardf=cardf
     ##### Create a csv file
     carcsv=cardf.to_csv(index=False)
     
@@ -183,48 +192,73 @@ def get_price(url):
     # See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
     workbook = xlsxwriter.Workbook(output, {'in_memory': True})
     worksheet = workbook.add_worksheet()
-    worksheet.write('A1','Price')
-    worksheet.write('B1','Mileage')
+    worksheet.write('A1','Mileage')
+    worksheet.write('B1','Price')
     worksheet.write('C1','Search results URL')
     worksheet.write('C2',url)
     worksheet.write('D1','Average')
-    worksheet.write('E1', '=AVERAGE(A2:A'+str(arrlen+1)+')')
+    worksheet.write('E1', '=AVERAGE(B2:B'+str(arrlen+1)+')')
     worksheet.write('D2','Minimum')
-    worksheet.write('E2', '=MIN(A2:A'+str(arrlen+1)+')')
+    worksheet.write('E2', '=MIN(B2:B'+str(arrlen+1)+')')
     worksheet.write('D3','Maximum')
-    worksheet.write('E3', '=MAX(A2:A'+str(arrlen+1)+')')
-    worksheet.write('E4','=LINEST(A2:A'+str(arrlen+1)+',B2:B'+str(arrlen+1)+',TRUE,FALSE)')
+    worksheet.write('E3', '=MAX(B2:B'+str(arrlen+1)+')')
+    
     for a in range(0,arrlen):
-        worksheet.write('A'+str(a+2),ecardf['Price'][a])
-        worksheet.write('B'+str(a+2),ecardf['Mileage'][a])
+        worksheet.write('B'+str(a+2),ecardf['Price'][a])
+        worksheet.write('A'+str(a+2),ecardf['Mileage'][a])
     workbook.close()
 
     
     
+   ####### Lin Reg Model
+    def predictprice(cardf,mileage):
+        slope,intercept,r,p,std_err=stats.linregress(cardf['Mileage'],cardf['Price'])
+        price=slope*mileage+intercept
+        return price
     ########### GUI ###############
+    hide_st_style="""
+                <style>
+                #MainMenu {visibility:hidden;}
+                footer {visibility: hidden;}
+                header {visibility: hidden;}
+                </style>
+                """
+    st.markdown(hide_st_style,unsafe_allow_html=True)
+                
+    st.write('')
+    st.header('Vehicle Market Data')
+    st.write('Market cap: R',round(mean*arrlen/100000,2),'million')
+    st.write('Number of similar listings: ',arrlen)
+    markup = int(st.number_input('Insert dealer markup %',value=20))
+    markup=markup/100.0
+    colmile,coltrade, colmark = st.columns(3)
     
- 
-    st.header('Vehicle Price Information')
-    st.write('Note that dealerships need to make a profit when they buy a car from you. Therefore, the selling price of the car is higher than the price they bought the car for.')
-    colnodeal, coldeal = st.columns(2)
+    with colmile:
+        st.subheader('Market mileage (km)')
+        st.write('average mileage is ',meanm)
+        st.write('minimum mileage is ',minm)
+        st.write('maximum mileage is ',maxm)
+    
+    with colmark:
+        st.subheader('Market prices (rand)')
+        st.write('average price is ',mean)
+        st.write('minimum price is ',mins)
+        st.write('maximum price is ',maxs)
 
-    with coldeal:
-        st.subheader('Prices others buy at')
-        st.write('the average price is: R',mean)
-        st.write('the minimum price is: R',mins)
-        st.write('the maximum price is: R',maxs)
-
-    with colnodeal:
-        st.subheader('Prices you sell at')
-        st.write('the average price is: R',round(mean*0.85,2))
-        st.write('the minimum price is: R',round(mins*0.85,2))
-        st.write('the maximum price is: R',round(maxs*0.85,2))
+    with coltrade:
+        st.subheader('Trade-in prices (rand)')
+        st.write('average price is ',round(mean*(1-markup),2))
+        st.write('minimum price is ',round(mins*(1-markup),2))
+        st.write('maximum price is ',round(maxs*(1-markup),2))
     
     st.write('')
 
     st.header('Graph of Price vs Mileage')
-    st.image('chart.png', caption='Price vs Mileage',width=500)
+    st.image('chart.jpeg', caption='Price vs Mileage',width=650)
     
+    st.header('Price Prediction')
+    age = st.slider('What is the mileage of the vehicle?', 0, int(1.5*max(cardf['Mileage'])), 30000)
+    st.write("The predicted price is R:", int(predictprice(cardf, age)))
     
     st.write('')
     
