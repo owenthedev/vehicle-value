@@ -283,10 +283,12 @@ def get_price(url):
 
 #UI
 st.title('PriceSmiths Vehicle Valuer') 
+st.write('Buy and Sell vehicles at the right price!')
+st.write('Watch the video below for a demo')
 url_in = st.text_input(label='Paste the URL here then press Enter',value='')
 if url_in=='':
     st.write('')
-    #st.video('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/how_to_value.mp4')
+    st.video('https://raw.githubusercontent.com/owenthedev/vehicle-value/main/how_to_value.mp4')
 else:
     get_price(url_in)
     
