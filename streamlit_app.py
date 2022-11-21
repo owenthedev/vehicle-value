@@ -227,7 +227,7 @@ def get_price(url):
                 
     st.write('')
     st.header('Vehicle Market Data')
-    st.write('Market cap: R',round(mean*arrlen/100000,2),'million')
+    st.write('Market cap: R',round(mean*arrlen/1000000,2),'million')
     st.write('Number of similar listings: ',arrlen)
     markup = int(st.number_input('Insert dealer markup %',value=20))
     markup=markup/100.0
